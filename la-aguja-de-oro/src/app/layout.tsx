@@ -1,0 +1,88 @@
+import type { Metadata } from 'next';
+import { Inter, Playfair_Display } from 'next/font/google';
+import './globals.css';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { MobileCTA } from '@/components/layout/MobileCTA';
+import { WhatsAppFloatButton } from '@/components/ui/WhatsAppFloatButton';
+import { BUSINESS } from '@/lib/business';
+
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  variable: '--font-playfair',
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+});
+
+export const metadata: Metadata = {
+  title: {
+    default: BUSINESS.seo.defaultTitle,
+    template: '%s | La Aguja de Oro',
+  },
+  description: BUSINESS.seo.defaultDescription,
+  metadataBase: new URL(BUSINESS.seo.siteUrl),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'es_ES',
+    siteName: 'La Aguja de Oro',
+    title: BUSINESS.seo.defaultTitle,
+    description: BUSINESS.seo.defaultDescription,
+    images: [
+      {
+        url: BUSINESS.seo.ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: 'La Aguja de Oro — Arreglos de Ropa en Avilés, Asturias',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: BUSINESS.seo.defaultTitle,
+    description: BUSINESS.seo.defaultDescription,
+    images: [BUSINESS.seo.ogImageUrl],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html
+      lang="es"
+      className={`${inter.variable} ${playfair.variable}`}
+    >
+      <body className="flex flex-col min-h-screen pb-mobile-cta">
+        <a href="#main-content" className="skip-link">
+          Saltar al contenido principal
+        </a>
+        <Header />
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
+        <Footer />
+        <MobileCTA />
+        <WhatsAppFloatButton />
+      </body>
+    </html>
+  );
+}
