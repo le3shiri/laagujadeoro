@@ -30,6 +30,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: [
+      { url: '/images/logo.png', type: 'image/png' },
+      { url: '/favicon.ico' },
+    ],
+    apple: [
+      { url: '/images/logo.png' },
+    ],
+  },
   openGraph: {
     type: 'website',
     locale: 'es_ES',
