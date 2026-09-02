@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { BUSINESS } from '@/lib/business';
 import { getWhatsAppUrl } from '@/lib/utils';
 
@@ -94,25 +95,22 @@ export function Hero() {
           <div className="relative">
             {/* Main image frame */}
             <div
-              className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-lg)]"
+              className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-lg)] bg-[var(--color-surface-2)]"
               style={{ aspectRatio: '4/5', maxHeight: '520px' }}
             >
-              {/* Real photo to replace: /images/hero-larbi.jpg */}
-              <div
-                className="w-full h-full img-placeholder flex flex-col items-center justify-center gap-3 bg-[var(--color-surface-2)]"
-                aria-label="Foto de Larbi El Achiri en su taller de Avilés"
-              >
-                <NeedleIcon className="w-16 h-16 text-[var(--color-gold)] opacity-30" />
-                <span className="text-xs text-[var(--color-muted-light)] text-center px-4">
-                  Foto del taller<br />
-                  <em>(Coloca tu imagen en /public/images/hero-larbi.jpg)</em>
-                </span>
-              </div>
+              <Image
+                src="/images/hero-larbi.jpeg"
+                alt="Larbi El Achiri cortando tejido a medida en el taller La Aguja de Oro en Avilés"
+                fill
+                priority
+                className="object-cover object-top hover:scale-105 transition-transform duration-700 ease-out"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 480px"
+              />
 
               {/* Gold accent border */}
               <div
                 className="absolute inset-0 rounded-2xl pointer-events-none"
-                style={{ boxShadow: 'inset 0 0 0 1px rgba(184,144,42,0.2)' }}
+                style={{ boxShadow: 'inset 0 0 0 1px rgba(184,144,42,0.3)' }}
               />
             </div>
 

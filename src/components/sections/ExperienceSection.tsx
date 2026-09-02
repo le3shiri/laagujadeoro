@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { BUSINESS } from '@/lib/business';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { ZaraLogo, MangoLogo, ElCorteInglesLogo } from '@/components/ui/BrandLogos';
 
 export function ExperienceSection() {
   return (
@@ -12,20 +14,16 @@ export function ExperienceSection() {
           <div className="relative">
             {/* Photo frame */}
             <div
-              className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-lg)]"
+              className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-lg)] bg-[var(--color-surface-3)]"
               style={{ aspectRatio: '4/5', maxHeight: '540px' }}
             >
-              {/* Real photo to replace: /images/larbi-el-achiri.jpg */}
-              <div
-                className="w-full h-full img-placeholder bg-[var(--color-surface-3)] flex flex-col items-center justify-center gap-3"
-                aria-label="Larbi El Achiri, propietario de La Aguja de Oro, Avilés"
-              >
-                <PersonIcon className="w-20 h-20 text-[var(--color-gold)] opacity-25" />
-                <span className="text-xs text-[var(--color-muted-light)] text-center px-4">
-                  Foto de Larbi El Achiri<br />
-                  <em>(Coloca tu imagen en /public/images/larbi-el-achiri.jpg)</em>
-                </span>
-              </div>
+              <Image
+                src="/images/hero-larbi3.jpeg"
+                alt="Larbi El Achiri realizando arreglos de costura a máquina en su taller de Avilés"
+                fill
+                className="object-cover object-top hover:scale-105 transition-transform duration-700 ease-out"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
+              />
             </div>
 
             {/* Decorative gold frame offset */}
@@ -68,6 +66,20 @@ export function ExperienceSection() {
               línea de producción con más de{' '}
               <strong className="text-[var(--color-text)]">{BUSINESS.owner.teamSize} personas</strong>.
             </p>
+
+            {/* Brand Logos mini badges */}
+            <div className="flex flex-wrap items-center gap-3 my-5">
+              <div className="px-3.5 py-1.5 rounded-lg bg-white border border-[var(--color-border)] shadow-xs flex items-center">
+                <ZaraLogo className="h-4.5 w-auto text-[var(--color-text)]" />
+              </div>
+              <div className="px-3.5 py-1.5 rounded-lg bg-white border border-[var(--color-border)] shadow-xs flex items-center">
+                <MangoLogo className="h-3.5 w-auto text-[var(--color-text)]" />
+              </div>
+              <div className="px-3.5 py-1.5 rounded-lg bg-white border border-[var(--color-border)] shadow-xs flex items-center">
+                <ElCorteInglesLogo className="h-5 w-auto text-[var(--color-text)]" />
+              </div>
+            </div>
+
             <p className="text-[var(--color-muted)] mb-8 leading-relaxed">
               Hoy, con toda esa experiencia, ofrece un servicio de arreglos y reparaciones de ropa
               completamente personalizado en su taller de <strong className="text-[var(--color-text)]">Avilés</strong>.

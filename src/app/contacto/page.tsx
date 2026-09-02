@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
@@ -174,39 +175,60 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          {/* Map */}
-          <AnimatedSection animation="fade-in" className="w-full">
-            <h2 className="mb-4 text-xl" style={{ fontFamily: 'var(--font-display)' }}>
-              Dónde encontrarnos
-            </h2>
-            <div
-              className="rounded-xl overflow-hidden shadow-[var(--shadow-md)]"
-              style={{ border: '1px solid var(--color-border)' }}
-            >
-              <iframe
-                src={BUSINESS.location.embedUrl}
-                width="100%"
-                height="380"
-                style={{ border: 0, display: 'block' }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Mapa de La Aguja de Oro en Avilés, Asturias"
-              />
-            </div>
-            <div className="mt-3 flex justify-between items-center">
-              <p className="text-xs text-[var(--color-muted)]">
-                Av. San Agustín, 7 · 33401 Avilés, Asturias
-              </p>
-              <a
-                href={BUSINESS.location.directionsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium text-[var(--color-gold)] hover:text-[var(--color-gold-dark)] inline-flex items-center gap-1 transition-colors"
+          {/* Map & Storefront */}
+          <AnimatedSection animation="fade-in" className="w-full space-y-6">
+            <div>
+              <h2 className="mb-4 text-xl" style={{ fontFamily: 'var(--font-display)' }}>
+                Nuestro taller en Avilés
+              </h2>
+              {/* Storefront photo */}
+              <div className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-md)] aspect-[16/10] bg-[var(--color-surface-2)] mb-6 border border-[var(--color-gold-border)]">
+                <Image
+                  src="/images/tienda.jpeg"
+                  alt="Fachada del taller de arreglos La Aguja de Oro en Av. San Agustín 7, Avilés"
+                  fill
+                  priority
+                  className="object-cover object-center hover:scale-102 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute bottom-3 left-3 bg-black/80 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-xs font-medium border border-white/20 flex items-center gap-1.5">
+                  <LocationIcon className="w-3.5 h-3.5 text-[var(--color-gold)]" />
+                  Fachada en Av. San Agustín, 7 (Avilés)
+                </div>
+              </div>
+
+              <h3 className="mb-3 text-base font-semibold" style={{ fontFamily: 'var(--font-display)' }}>
+                Ubicación en el mapa
+              </h3>
+              <div
+                className="rounded-xl overflow-hidden shadow-[var(--shadow-md)]"
+                style={{ border: '1px solid var(--color-border)' }}
               >
-                Ver en Google Maps
-                <ArrowIcon className="w-4 h-4" />
-              </a>
+                <iframe
+                  src={BUSINESS.location.embedUrl}
+                  width="100%"
+                  height="280"
+                  style={{ border: 0, display: 'block' }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Mapa de La Aguja de Oro en Avilés, Asturias"
+                />
+              </div>
+              <div className="mt-3 flex justify-between items-center">
+                <p className="text-xs text-[var(--color-muted)]">
+                  Av. San Agustín, 7 · 33401 Avilés, Asturias
+                </p>
+                <a
+                  href={BUSINESS.location.directionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium text-[var(--color-gold)] hover:text-[var(--color-gold-dark)] inline-flex items-center gap-1 transition-colors"
+                >
+                  Ver en Google Maps
+                  <ArrowIcon className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </AnimatedSection>
         </div>

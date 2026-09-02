@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { BrandLogosShowcase } from '@/components/ui/BrandLogos';
 import { BUSINESS } from '@/lib/business';
 import { getWhatsAppUrl } from '@/lib/utils';
 import Link from 'next/link';
@@ -92,19 +94,17 @@ export default function ExperienciaPage() {
           <AnimatedSection animation="fade-in">
             <div className="relative">
               <div
-                className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-lg)]"
+                className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-lg)] bg-[var(--color-surface-3)]"
                 style={{ aspectRatio: '3/4', maxHeight: '560px' }}
               >
-                <div
-                  className="w-full h-full img-placeholder bg-[var(--color-surface-3)] flex flex-col items-center justify-center gap-3"
-                  aria-label="Larbi El Achiri, propietario de La Aguja de Oro, en su taller de Avilés"
-                >
-                  <PersonIcon className="w-24 h-24 text-[var(--color-gold)] opacity-20" />
-                  <span className="text-xs text-[var(--color-muted-light)] text-center px-4">
-                    Foto de Larbi El Achiri<br />
-                    <em>(Coloca tu imagen en /public/images/larbi-experiencia.jpg)</em>
-                  </span>
-                </div>
+                <Image
+                  src="/images/hero-larbi3.jpeg"
+                  alt="Larbi El Achiri trabajando en la máquina de coser en La Aguja de Oro, Avilés"
+                  fill
+                  priority
+                  className="object-cover object-top hover:scale-105 transition-transform duration-700 ease-out"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 520px"
+                />
               </div>
               <div
                 className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl -z-10"
@@ -219,27 +219,91 @@ export default function ExperienciaPage() {
         </div>
       </SectionWrapper>
 
-      {/* Brands mention */}
-      <SectionWrapper background="white" size="sm">
-        <div className="max-w-2xl mx-auto text-center">
+      {/* Workshop in action photo gallery */}
+      <SectionWrapper background="white">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <span className="section-label mx-auto">El arte del oficio</span>
           <AnimatedSection>
-            <p className="text-sm text-[var(--color-muted)] mb-4 uppercase tracking-widest font-semibold">
-              Experiencia profesional junto a grandes marcas de la moda
+            <h2 className="mt-3 mb-3" style={{ fontFamily: 'var(--font-display)' }}>
+              El taller en imágenes
+            </h2>
+            <p className="text-[var(--color-muted)] text-sm">
+              Cada prenda pasa por un proceso meticuloso: desde la toma de medidas hasta la puntada final con maquinaria profesional.
             </p>
-            <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-              {BUSINESS.owner.brands.map((brand) => (
-                <span
-                  key={brand}
-                  className="text-xl md:text-2xl font-bold text-[var(--color-muted-light)]"
-                  style={{ fontFamily: 'var(--font-display)', letterSpacing: '0.05em' }}
-                >
-                  {brand}
-                </span>
-              ))}
+          </AnimatedSection>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <AnimatedSection delay={1} className="group">
+            <div className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-md)] bg-[var(--color-surface-2)] aspect-[4/5]">
+              <Image
+                src="/images/hero-larbi.jpeg"
+                alt="Larbi cortando tejido con tijeras de sastre"
+                fill
+                className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-5 text-white">
+                <span className="text-xs uppercase tracking-wider font-semibold text-[var(--color-gold-light)]">Paso 1</span>
+                <h3 className="text-base font-semibold">Corte y patronaje a medida</h3>
+                <p className="text-xs text-gray-200 mt-1">Medición milimétrica y corte manual adaptado a tu silueta.</p>
+              </div>
             </div>
-            <p className="mt-4 text-xs text-[var(--color-muted-light)]">
-              Menciones de trayectoria profesional. Estas empresas no avalan ni recomiendan actualmente La Aguja de Oro.
-            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={2} className="group">
+            <div className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-md)] bg-[var(--color-surface-2)] aspect-[4/5]">
+              <Image
+                src="/images/hero-larbi2.jpeg"
+                alt="Larbi calibrando la máquina overlock industrial"
+                fill
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-5 text-white">
+                <span className="text-xs uppercase tracking-wider font-semibold text-[var(--color-gold-light)]">Paso 2</span>
+                <h3 className="text-base font-semibold">Maquinaria profesional</h3>
+                <p className="text-xs text-gray-200 mt-1">Ajuste y enhebrado de remalladoras industriales para acabados de fábrica.</p>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={3} className="group">
+            <div className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-md)] bg-[var(--color-surface-2)] aspect-[4/5]">
+              <Image
+                src="/images/tienda.jpeg"
+                alt="Fachada del taller La Aguja de Oro en Avilés"
+                fill
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-5 text-white">
+                <span className="text-xs uppercase tracking-wider font-semibold text-[var(--color-gold-light)]">Atención directa</span>
+                <h3 className="text-base font-semibold">Taller en Avilés</h3>
+                <p className="text-xs text-gray-200 mt-1">Av. San Agustín, 7. Trato cercano, honesto y sin cita previa.</p>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </SectionWrapper>
+
+      {/* Brands showcase */}
+      <SectionWrapper background="ivory">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="section-label mx-auto">Grandes firmas</span>
+            <AnimatedSection>
+              <h2 className="mt-3 mb-3" style={{ fontFamily: 'var(--font-display)' }}>
+                Experiencia con las grandes marcas
+              </h2>
+              <p className="text-sm text-[var(--color-muted)] leading-relaxed">
+                Durante dos décadas, Larbi formó parte de los equipos de confección y patronaje de las marcas de moda más exigentes de España.
+              </p>
+            </AnimatedSection>
+          </div>
+
+          <AnimatedSection delay={1}>
+            <BrandLogosShowcase variant="cards" showDisclaimer={true} />
           </AnimatedSection>
         </div>
       </SectionWrapper>

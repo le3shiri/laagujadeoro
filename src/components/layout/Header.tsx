@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { BUSINESS } from '@/lib/business';
@@ -50,10 +51,20 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 shrink-0"
+            className="flex items-center gap-2.5 shrink-0 group"
             aria-label="La Aguja de Oro — Inicio"
           >
-            <span className="font-display font-semibold text-xl tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>
+            <div className="relative w-10 h-10 md:w-11 md:h-11 rounded-full overflow-hidden bg-black flex items-center justify-center shrink-0 border border-[var(--color-gold-border)] shadow-sm">
+              <Image
+                src="/images/logo.png"
+                alt="Logo La Aguja de Oro"
+                width={44}
+                height={44}
+                priority
+                className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <span className="font-display font-semibold text-lg md:text-xl tracking-tight leading-none" style={{ fontFamily: 'var(--font-display)' }}>
               <span style={{ color: 'var(--color-text)' }}>La Aguja</span>
               {' '}
               <span style={{ color: 'var(--color-gold)' }}>de Oro</span>

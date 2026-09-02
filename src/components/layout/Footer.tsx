@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { BUSINESS } from '@/lib/business';
 import { getWhatsAppUrl } from '@/lib/utils';
 
@@ -34,11 +35,25 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-4" aria-label="La Aguja de Oro — Inicio">
-              <span style={{ fontFamily: 'var(--font-display)' }} className="text-xl font-semibold">
-                <span className="text-white">La Aguja</span>{' '}
-                <span style={{ color: 'var(--color-gold)' }}>de Oro</span>
-              </span>
+            <Link href="/" className="inline-flex items-center gap-3 mb-4 group" aria-label="La Aguja de Oro — Inicio">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden bg-black flex items-center justify-center border border-[var(--color-gold-border)] shrink-0">
+                <Image
+                  src="/images/logo.png"
+                  alt="Logo La Aguja de Oro"
+                  width={48}
+                  height={48}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <div>
+                <span style={{ fontFamily: 'var(--font-display)' }} className="text-xl font-semibold block leading-tight">
+                  <span className="text-white">La Aguja</span>{' '}
+                  <span style={{ color: 'var(--color-gold)' }}>de Oro</span>
+                </span>
+                <span className="text-[0.68rem] tracking-wider uppercase text-gray-400 font-medium">
+                  Arreglos y Reparación
+                </span>
+              </div>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed mb-4">
               Arreglos y reparaciones de todo tipo de ropa en Avilés, Asturias.

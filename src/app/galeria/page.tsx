@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
@@ -10,53 +11,54 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Galería de Trabajos | La Aguja de Oro, Avilés',
   description:
-    'Galería de arreglos y reparaciones realizados en La Aguja de Oro. Antes y después, detalles del trabajo y el taller de Avilés, Asturias.',
+    'Galería de fotos de La Aguja de Oro: taller en Avilés, maestro sastre en acción, patronaje, maquinaria y resultados de arreglos y confección.',
   alternates: {
     canonical: '/galeria',
   },
   openGraph: {
     title: 'Galería | La Aguja de Oro — Resultados Reales',
     description:
-      'Ve el resultado de los arreglos de ropa realizados en La Aguja de Oro. Antes/después, detalles de trabajo y taller en Avilés.',
+      'Ve el taller, la maquinaria y el trabajo de confección y arreglos de ropa en La Aguja de Oro en Avilés, Asturias.',
     url: `${BUSINESS.seo.siteUrl}/galeria`,
   },
 };
 
-// Photo placeholders — replace with real images in /public/images/galeria/
-const GALLERY_SECTIONS = [
+const REAL_WORKSHOP_PHOTOS = [
   {
-    id: 'antes-despues',
-    title: 'Antes y después',
-    description: 'El resultado habla por sí solo.',
-    items: [
-      { alt: 'Arreglo de pantalón: antes y después del ajuste de bajo', filename: 'pantalon-antes-despues.jpg' },
-      { alt: 'Ajuste de vestido: entalle lateral antes y después', filename: 'vestido-antes-despues.jpg' },
-      { alt: 'Reparación de chaqueta: forro roto antes y nuevo después', filename: 'chaqueta-antes-despues.jpg' },
-      { alt: 'Cambio de cremallera en abrigo: antes y después', filename: 'abrigo-cremallera-antes-despues.jpg' },
-    ],
+    title: 'Fachada y taller en Avilés',
+    subtitle: 'Av. San Agustín, 7',
+    src: '/images/tienda.jpeg',
+    alt: 'Fachada exterior de La Aguja de Oro en Avilés con sus horarios y servicios',
+    span: 'col-span-1 md:col-span-2 aspect-[16/10]',
   },
   {
-    id: 'taller',
-    title: 'El taller',
-    description: 'El espacio donde se trabaja cada prenda.',
-    items: [
-      { alt: 'Interior del taller La Aguja de Oro en Avilés', filename: 'taller-interior.jpg' },
-      { alt: 'Máquina de coser profesional en el taller', filename: 'maquina-de-coser.jpg' },
-      { alt: 'Herramientas de costura en el taller de La Aguja de Oro', filename: 'herramientas-taller.jpg' },
-      { alt: 'Larbi El Achiri trabajando en el taller de Avilés', filename: 'larbi-taller.jpg' },
-    ],
+    title: 'Corte y patronaje',
+    subtitle: 'Técnica manual y medición precisa',
+    src: '/images/hero-larbi.jpeg',
+    alt: 'Larbi El Achiri cortando tela sobre la mesa de trabajo',
+    span: 'col-span-1 aspect-[4/5]',
   },
   {
-    id: 'detalles',
-    title: 'Detalles del trabajo',
-    description: 'La precisión en cada puntada.',
-    items: [
-      { alt: 'Detalle de costura perfecta en pantalón arreglado', filename: 'detalle-costura.jpg' },
-      { alt: 'Detalle de cremallera nueva instalada en prenda', filename: 'detalle-cremallera.jpg' },
-      { alt: 'Detalle de bajo de vestido ajustado a medida', filename: 'detalle-bajo-vestido.jpg' },
-      { alt: 'Detalle de reparación de forro en chaqueta', filename: 'detalle-forro.jpg' },
-    ],
+    title: 'Maquinaria industrial especializada',
+    subtitle: 'Remallado y enhebrado de precisión',
+    src: '/images/hero-larbi2.jpeg',
+    alt: 'Larbi preparando la máquina de coser industrial',
+    span: 'col-span-1 aspect-[4/5]',
   },
+  {
+    title: 'Costura y confección',
+    subtitle: 'Más de 30 años de maestría',
+    src: '/images/hero-larbi3.jpeg',
+    alt: 'Larbi cosiendo una prenda a máquina en su taller',
+    span: 'col-span-1 md:col-span-2 aspect-[16/10]',
+  },
+];
+
+const SERVICE_GALLERY_SAMPLES = [
+  { title: 'Arreglo de pantalones', desc: 'Bajos originales, entalles y cinturas', tag: 'Pantalones' },
+  { title: 'Ajuste de vestidos', desc: 'Entallado lateral, tirantes y dobladillos', tag: 'Vestidos' },
+  { title: 'Chaquetas y abrigos', desc: 'Arreglo de hombros, mangas y forros', tag: 'Sastrería' },
+  { title: 'Cambio de cremalleras', desc: 'Cremalleras invisibles, metálicas y reforzadas', tag: 'Reparación' },
 ];
 
 export default function GaleriaPage() {
@@ -76,57 +78,91 @@ export default function GaleriaPage() {
             className="mb-6"
           />
           <div className="max-w-2xl">
-            <span className="section-label mb-3">Trabajos reales</span>
+            <span className="section-label mb-3">Galería fotográfica</span>
             <h1 className="mb-4" style={{ fontFamily: 'var(--font-display)' }}>
-              El trabajo habla
+              El taller y la artesanía
               {' '}
-              <span style={{ color: 'var(--color-gold)' }}>por sí solo</span>
+              <span style={{ color: 'var(--color-gold)' }}>en imágenes</span>
             </h1>
             <p className="text-lg text-[var(--color-muted)] leading-relaxed">
-              Aquí puedes ver algunos de los arreglos y reparaciones realizados en La Aguja de Oro.
-              Fotos del taller, del proceso y de los resultados antes y después.
+              Conoce las instalaciones de La Aguja de Oro en Avilés, el proceso de trabajo y la dedicación
+              con la que cuidamos cada prenda.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Gallery sections */}
-      {GALLERY_SECTIONS.map((section, sectionIndex) => (
-        <SectionWrapper
-          key={section.id}
-          background={sectionIndex % 2 === 0 ? 'white' : 'ivory'}
-          id={section.id}
-        >
-          <AnimatedSection className="mb-8">
-            <h2 style={{ fontFamily: 'var(--font-display)' }}>{section.title}</h2>
-            <p className="mt-2 text-[var(--color-muted)]">{section.description}</p>
-          </AnimatedSection>
+      {/* Real Photos Section */}
+      <SectionWrapper background="white">
+        <AnimatedSection className="mb-8">
+          <span className="section-label">Instalaciones y oficio</span>
+          <h2 className="mt-2" style={{ fontFamily: 'var(--font-display)' }}>
+            El taller por dentro y por fuera
+          </h2>
+          <p className="mt-2 text-[var(--color-muted)]">
+            Fotografías reales de nuestro espacio de trabajo y de Larbi El Achiri en plena labor.
+          </p>
+        </AnimatedSection>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {section.items.map((item, index) => (
-              <AnimatedSection
-                key={item.filename}
-                delay={(Math.min(index + 1, 4)) as 1 | 2 | 3 | 4}
-                className="rounded-xl overflow-hidden shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] transition-shadow"
-              >
-                <div
-                  className="img-placeholder bg-[var(--color-surface-3)]"
-                  style={{ aspectRatio: '1', minHeight: '160px' }}
-                  role="img"
-                  aria-label={item.alt}
-                >
-                  <div className="flex flex-col items-center justify-center w-full h-full text-center p-3 gap-1">
-                    <CameraIcon className="w-6 h-6 text-[var(--color-muted-light)] opacity-50" />
-                    <span className="text-[0.6rem] text-[var(--color-muted-light)]">
-                      {item.filename}
-                    </span>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </SectionWrapper>
-      ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {REAL_WORKSHOP_PHOTOS.map((photo, index) => (
+            <AnimatedSection
+              key={photo.src}
+              delay={(Math.min(index + 1, 4)) as 1 | 2 | 3 | 4}
+              className={`rounded-2xl overflow-hidden shadow-[var(--shadow-md)] relative group bg-[var(--color-surface-2)] border border-[var(--color-gold-border)] ${photo.span}`}
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex flex-col justify-end p-5 text-white">
+                <span className="text-xs uppercase tracking-wider font-semibold text-[var(--color-gold-light)]">
+                  {photo.subtitle}
+                </span>
+                <h3 className="text-lg font-semibold text-white mt-0.5">
+                  {photo.title}
+                </h3>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+      </SectionWrapper>
+
+      {/* Services and craftsmanship types */}
+      <SectionWrapper background="ivory">
+        <AnimatedSection className="mb-8">
+          <span className="section-label">Especialidades</span>
+          <h2 className="mt-2" style={{ fontFamily: 'var(--font-display)' }}>
+            Tipos de arreglos habituales
+          </h2>
+          <p className="mt-2 text-[var(--color-muted)]">
+            Trabajamos con todo tipo de telas: lana, seda, punto, cuero, vaquero y prendas técnicas.
+          </p>
+        </AnimatedSection>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {SERVICE_GALLERY_SAMPLES.map((sample, idx) => (
+            <AnimatedSection
+              key={sample.title}
+              delay={(Math.min(idx + 1, 4)) as 1 | 2 | 3 | 4}
+              className="card bg-white p-6 rounded-xl border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="inline-block px-2.5 py-1 text-[0.7rem] font-semibold uppercase tracking-wider rounded-md bg-[var(--color-gold-bg)] text-[var(--color-gold)] border border-[var(--color-gold-border)] mb-3">
+                {sample.tag}
+              </div>
+              <h3 className="text-base font-semibold mb-2" style={{ fontFamily: 'var(--font-display)' }}>
+                {sample.title}
+              </h3>
+              <p className="text-xs text-[var(--color-muted)] leading-relaxed">
+                {sample.desc}
+              </p>
+            </AnimatedSection>
+          ))}
+        </div>
+      </SectionWrapper>
 
       {/* CTA to add real photos */}
       <SectionWrapper background="gold-tint" size="sm">
@@ -155,14 +191,5 @@ export default function GaleriaPage() {
 
       <FinalCTA />
     </>
-  );
-}
-
-function CameraIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
-    </svg>
   );
 }

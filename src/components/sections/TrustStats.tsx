@@ -1,6 +1,7 @@
 import { BUSINESS } from '@/lib/business';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { BrandLogosShowcase } from '@/components/ui/BrandLogos';
 
 const TRUST_STATS = [
   {
@@ -60,14 +61,14 @@ export function TrustStats() {
         ))}
       </div>
 
-      {/* Brand mention */}
-      <AnimatedSection className="mt-8 text-center">
-        <p className="text-sm text-[var(--color-muted)] italic">
-          Experiencia profesional junto a grandes marcas de la moda:{' '}
-          <span className="font-semibold text-[var(--color-text-secondary)] not-italic">
-            {BUSINESS.owner.brands.join(' · ')}
+      {/* Brand logos showcase */}
+      <AnimatedSection className="mt-10 pt-6 border-t border-[var(--color-border)]">
+        <div className="text-center mb-2">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)]">
+            Trayectoria profesional junto a referentes de la moda
           </span>
-        </p>
+        </div>
+        <BrandLogosShowcase variant="compact" showDisclaimer={false} />
       </AnimatedSection>
     </SectionWrapper>
   );

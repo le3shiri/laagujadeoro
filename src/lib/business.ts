@@ -44,7 +44,7 @@ export const BUSINESS = {
     defaultDescription:
       'Arreglos y reparaciones de todo tipo de ropa en Avilés, Asturias. 30 años de experiencia. Trae tu prenda y te valoramos el arreglo sin compromiso.',
     siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://laagujaDeoro.com',
-    ogImageUrl: '/og-image.jpg',
+    ogImageUrl: '/images/logo.png',
   },
   schema: {
     type: 'ClothingStore',
