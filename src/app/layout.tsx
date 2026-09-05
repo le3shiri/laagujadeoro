@@ -91,6 +91,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: 'googled00373fa02fa5a12.html',
+  },
   other: {
     'geo.region': 'ES-AS',
     'geo.placename': 'Avilés, Asturias',

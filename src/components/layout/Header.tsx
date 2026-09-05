@@ -57,7 +57,7 @@ export function Header() {
             <div className="relative w-10 h-10 md:w-11 md:h-11 rounded-full overflow-hidden bg-black flex items-center justify-center shrink-0 border border-[var(--color-gold-border)] shadow-sm">
               <Image
                 src="/images/logo.png"
-                alt="Logo La Aguja de Oro"
+                alt="Logotipo de La Aguja de Oro — Sastrería y Arreglos de Ropa en Avilés"
                 width={44}
                 height={44}
                 priority

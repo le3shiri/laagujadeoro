@@ -39,7 +39,7 @@ export function Footer() {
               <div className="relative w-12 h-12 rounded-full overflow-hidden bg-black flex items-center justify-center border border-[var(--color-gold-border)] shrink-0">
                 <Image
                   src="/images/logo.png"
-                  alt="Logo La Aguja de Oro"
+                  alt="Logotipo de La Aguja de Oro — Taller de Arreglos en Avilés"
                   width={48}
                   height={48}
                   className="object-cover w-full h-full"
@@ -51,18 +51,16 @@ export function Footer() {
                   <span style={{ color: 'var(--color-gold)' }}>de Oro</span>
                 </span>
                 <span className="text-[0.68rem] tracking-wider uppercase text-gray-400 font-medium">
-                  Arreglos y Reparación
+                  Arreglos y Costura Artesanal
                 </span>
               </div>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed mb-4">
-              Arreglos y reparaciones de todo tipo de ropa en Avilés, Asturias.
-              Más de 30 años de experiencia con la precisión y el cuidado de siempre.
+              Arreglos y reparaciones de ropa en Avilés, Asturias. Más de 30 años de oficio con atención cercana y sin cita previa.
             </p>
-            {/* Social slots — ready for future links */}
-            <div className="flex gap-3" aria-label="Redes sociales">
-              {/* Social links will be added when accounts are created */}
-            </div>
+            <p className="text-xs text-gray-400 leading-relaxed">
+              <strong className="text-gray-300">Cobertura:</strong> Avilés, Salinas, Castrillón, Corvera, Gozón y resto de Asturias.
+            </p>
           </div>
 
           {/* Navigation column */}
@@ -87,7 +85,7 @@ export function Footer() {
           {/* Services column */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-widest text-gray-400 mb-4">
-              Servicios
+              Servicios en Avilés
             </h3>
             <ul className="space-y-2 list-none m-0 p-0" role="list">
               {SERVICES_NAV.map((link) => (
@@ -106,7 +104,7 @@ export function Footer() {
           {/* Contact column */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-widest text-gray-400 mb-4">
-              Contacto
+              Contacto y Horario
             </h3>
             <address className="not-italic space-y-3">
               <div className="flex items-start gap-2.5">
@@ -139,14 +137,20 @@ export function Footer() {
               </div>
             </address>
 
+            <div className="mt-4 pt-3 border-t border-white/10 text-xs text-gray-400">
+              <p className="font-medium text-gray-300 mb-1">Horario de apertura:</p>
+              <p>L-V: 10:00 - 13:30 | 16:30 - 20:00</p>
+              <p>Sábados: 10:00 - 13:30</p>
+            </div>
+
             <a
               href={BUSINESS.location.directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-4 text-sm font-medium text-[var(--color-gold)] hover:text-[var(--color-gold-light)] transition-colors"
+              className="inline-flex items-center gap-2 mt-3 text-sm font-medium text-[var(--color-gold)] hover:text-[var(--color-gold-light)] transition-colors"
             >
               <MapIcon className="w-4 h-4" />
-              Cómo llegar
+              Cómo llegar al taller
             </a>
           </div>
         </div>
