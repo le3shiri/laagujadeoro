@@ -4,6 +4,7 @@ import { SectionWrapper } from '@/components/ui/SectionWrapper';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { FinalCTA } from '@/components/sections/FinalCTA';
+import { JsonLd } from '@/components/seo/JsonLd';
 import { BUSINESS } from '@/lib/business';
 import { getWhatsAppUrl } from '@/lib/utils';
 import Link from 'next/link';
@@ -20,6 +21,28 @@ export const metadata: Metadata = {
     description:
       'Ve el taller, la maquinaria y el trabajo de confección y arreglos de ropa en La Aguja de Oro en Avilés, Asturias.',
     url: `${BUSINESS.seo.siteUrl}/galeria`,
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: BUSINESS.seo.siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Galería', item: `${BUSINESS.seo.siteUrl}/galeria` },
+  ],
+};
+
+const imageGallerySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ImageGallery',
+  name: 'Galería del Taller La Aguja de Oro en Avilés',
+  description: 'Instalaciones, proceso artesanal de sastrería y maquinaria en Avilés, Asturias.',
+  url: `${BUSINESS.seo.siteUrl}/galeria`,
+  publisher: {
+    '@type': 'ClothingStore',
+    name: BUSINESS.name,
+    url: BUSINESS.seo.siteUrl,
   },
 };
 
@@ -64,6 +87,7 @@ const SERVICE_GALLERY_SAMPLES = [
 export default function GaleriaPage() {
   return (
     <>
+      <JsonLd data={[breadcrumbSchema, imageGallerySchema]} />
       {/* Hero */}
       <section
         className="bg-[var(--color-surface-2)]"

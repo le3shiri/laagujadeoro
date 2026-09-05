@@ -5,6 +5,7 @@ import { SectionWrapper } from '@/components/ui/SectionWrapper';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { FinalCTA } from '@/components/sections/FinalCTA';
+import { JsonLd } from '@/components/seo/JsonLd';
 import { BUSINESS } from '@/lib/business';
 import { getWhatsAppUrl } from '@/lib/utils';
 
@@ -23,9 +24,33 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: BUSINESS.seo.siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Servicios', item: `${BUSINESS.seo.siteUrl}/servicios` },
+  ],
+};
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Servicios de Arreglos de Ropa en Avilés',
+  description: 'Catálogo de servicios de confección y arreglos de ropa en La Aguja de Oro.',
+  itemListElement: SERVICES.map((service, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: service.title,
+    description: service.description,
+    url: service.id !== 'otros' ? `${BUSINESS.seo.siteUrl}/servicios/${service.slug}` : `${BUSINESS.seo.siteUrl}/servicios`,
+  })),
+};
+
 export default function ServiciosPage() {
   return (
     <>
+      <JsonLd data={[breadcrumbSchema, itemListSchema]} />
       {/* Page hero */}
       <section
         className="bg-[var(--color-surface-2)]"

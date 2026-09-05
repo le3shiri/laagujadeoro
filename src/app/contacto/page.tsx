@@ -31,10 +31,38 @@ const breadcrumbSchema = {
   ],
 };
 
+const contactPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contacto y Ubicación — La Aguja de Oro',
+  description: 'Información de contacto, ubicación del taller en Avilés y horarios de atención.',
+  url: `${BUSINESS.seo.siteUrl}/contacto`,
+  mainEntity: {
+    '@type': 'ClothingStore',
+    name: BUSINESS.name,
+    telephone: BUSINESS.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: BUSINESS.address.street,
+      addressLocality: BUSINESS.address.city,
+      addressRegion: BUSINESS.address.province,
+      postalCode: BUSINESS.address.postalCode,
+      addressCountry: BUSINESS.address.countryCode,
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: BUSINESS.location.lat,
+      longitude: BUSINESS.location.lng,
+    },
+    openingHoursSpecification: BUSINESS.hours.specification,
+    hasMap: BUSINESS.location.googleMapsUrl,
+  },
+};
+
 export default function ContactoPage() {
   return (
     <>
-      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={[breadcrumbSchema, contactPageSchema]} />
 
       {/* Hero */}
       <section

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { SERVICES } from '@/lib/services';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import { getWhatsAppUrl } from '@/lib/utils';
 
 interface ServicesGridProps {
   limit?: number;
@@ -14,14 +15,13 @@ export function ServicesGrid({ limit, showCTA = true }: ServicesGridProps) {
   return (
     <SectionWrapper background="white">
       <div className="text-center mb-12">
-        <span className="section-label mx-auto">Nuestros servicios</span>
+        <span className="section-label mx-auto">Nuestros servicios en Avilés</span>
         <AnimatedSection>
           <h2 className="mt-3" style={{ fontFamily: 'var(--font-display)' }}>
-            Todo tipo de arreglos y reparaciones
+            Especialistas en arreglos y confección a medida
           </h2>
           <p className="mt-3 text-[var(--color-muted)] max-w-2xl mx-auto">
-            Trabajamos con todo tipo de prendas y arreglos. Si tiene relación con la reparación
-            o modificación de una prenda, consúltanos sin compromiso.
+            Trabajamos con todo tipo de prendas y tejidos: pantalones, vestidos de fiesta, abrigos, cremalleras y arreglos urgentes. Consúltanos sin compromiso.
           </p>
         </AnimatedSection>
       </div>
@@ -79,15 +79,14 @@ export function ServicesGrid({ limit, showCTA = true }: ServicesGridProps) {
               className="text-xl font-semibold mb-2"
               style={{ fontFamily: 'var(--font-display)' }}
             >
-              ¿No ves lo que necesitas?
+              ¿Tienes una prenda que necesitas arreglar?
             </h3>
             <p className="text-[var(--color-muted)] text-sm mb-5">
-              Trabajamos con todo tipo de prendas. Trae tu ropa al taller y la valoramos en persona.
-              Sin compromiso.
+              Trabajamos con todo tipo de prendas y marcas. Trae tu ropa al taller en Avilés y la valoramos en persona con presupuesto previo.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="https://wa.me/34654151623?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20un%20arreglo%20de%20ropa."
+                href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-whatsapp"

@@ -27,6 +27,25 @@ export const metadata: Metadata = {
   },
   description: BUSINESS.seo.defaultDescription,
   metadataBase: new URL(BUSINESS.seo.siteUrl),
+  keywords: [
+    'arreglos de ropa Avilés',
+    'modista Avilés',
+    'sastre Avilés',
+    'taller de costura Avilés',
+    'arreglar bajos pantalón Avilés',
+    'cambiar cremalleras Avilés',
+    'ajustar vestidos Avilés',
+    'arreglos de chaquetas y abrigos',
+    'costura y confección Asturias',
+    'reparación de ropa Avilés',
+  ],
+  authors: [{ name: BUSINESS.owner.name }],
+  creator: BUSINESS.owner.name,
+  publisher: BUSINESS.name,
+  formatDetection: {
+    telephone: true,
+    address: true,
+  },
   alternates: {
     canonical: '/',
   },
@@ -42,6 +61,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'es_ES',
+    url: BUSINESS.seo.siteUrl,
     siteName: 'La Aguja de Oro',
     title: BUSINESS.seo.defaultTitle,
     description: BUSINESS.seo.defaultDescription,
@@ -50,7 +70,7 @@ export const metadata: Metadata = {
         url: BUSINESS.seo.ogImageUrl,
         width: 1200,
         height: 630,
-        alt: 'La Aguja de Oro — Arreglos de Ropa en Avilés, Asturias',
+        alt: 'La Aguja de Oro — Taller de Arreglos de Ropa en Avilés, Asturias',
       },
     ],
   },
@@ -66,7 +86,16 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
+  },
+  other: {
+    'geo.region': 'ES-AS',
+    'geo.placename': 'Avilés, Asturias',
+    'geo.position': `${BUSINESS.location.lat};${BUSINESS.location.lng}`,
+    'ICBM': `${BUSINESS.location.lat}, ${BUSINESS.location.lng}`,
   },
 };
 

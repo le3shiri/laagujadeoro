@@ -23,12 +23,12 @@ export function Hero() {
       />
 
       <div className="container relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16"
-        style={{ paddingTop: 'clamp(3rem, 8vw, 6rem)', paddingBottom: 'clamp(3rem, 8vw, 6rem)' }}
+        style={{ paddingTop: 'clamp(3rem, 8vw, 5.5rem)', paddingBottom: 'clamp(3rem, 8vw, 5.5rem)' }}
       >
         {/* Left: Text content */}
         <div className="flex-1 max-w-2xl text-center lg:text-left">
-          {/* Location tag */}
-          <div className="inline-flex items-center gap-2 mb-6">
+          {/* Location & Experience tag */}
+          <div className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-5">
             <span
               className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest px-3 py-1.5 rounded-full border"
               style={{
@@ -38,26 +38,49 @@ export function Hero() {
               }}
             >
               <LocationDotIcon className="w-3 h-3" />
-              Avilés, Asturias
+              Av. San Agustín, 7 · Avilés, Asturias
+            </span>
+            <span
+              className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-[var(--color-surface-2)] text-[var(--color-text-secondary)] border border-[var(--color-border)]"
+            >
+              <StarIcon className="w-3.5 h-3.5 text-[var(--color-gold)]" />
+              Maestro sastre artesanal · 30+ años
             </span>
           </div>
 
           <h1
-            className="mb-4 text-[var(--color-text)]"
-            style={{ fontFamily: 'var(--font-display)' }}
+            className="mb-4 text-[var(--color-text)] tracking-tight"
+            style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.1rem, 4.5vw, 3.25rem)', lineHeight: 1.15 }}
           >
-            Arreglos de ropa
-            {' '}
+            Arreglos de ropa en Avilés{' '}
             <span style={{ color: 'var(--color-gold)', display: 'inline' }}>
-              con experiencia de verdad
+              con maestría y precisión
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl leading-relaxed text-[var(--color-muted)] mb-8 max-w-xl mx-auto lg:mx-0">
-            Más de <strong className="text-[var(--color-text)] font-semibold">30 años</strong> arreglando y reparando todo tipo de ropa.
-            Trae tu prenda al taller, la valoramos en persona y te decimos el precio antes de empezar.
-            Sin sorpresas.
+          <p className="text-lg md:text-xl leading-relaxed text-[var(--color-muted)] mb-6 max-w-xl mx-auto lg:mx-0">
+            Arreglos, entalles y reparaciones para todo tipo de prendas y tejidos.
+            Trae tu ropa a nuestro taller, la probamos y te damos presupuesto exacto en el momento.
+            <strong> Sin sorpresas y sin necesidad de cita previa.</strong>
           </p>
+
+          {/* Key service keywords chips */}
+          <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-7" aria-label="Especialidades principales">
+            {[
+              'Bajos de vaqueros',
+              'Ajuste de vestidos',
+              'Chaquetas y abrigos',
+              'Cambio de cremalleras',
+              'Trajes de ceremonia',
+            ].map((tag) => (
+              <span
+                key={tag}
+                className="text-xs px-2.5 py-1 rounded-md bg-[var(--color-surface-2)] text-[var(--color-text-secondary)] border border-[var(--color-border)] font-medium"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
@@ -65,29 +88,39 @@ export function Hero() {
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-whatsapp"
+              className="btn btn-whatsapp shadow-md hover:shadow-lg transition-all"
               aria-label="Escribir por WhatsApp a La Aguja de Oro"
             >
               <WhatsAppIcon className="w-5 h-5" />
-              Escribir por WhatsApp
+              Consultar por WhatsApp
             </a>
             <a
               href={BUSINESS.location.directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-outline"
+              className="btn btn-outline hover:bg-[var(--color-surface-2)] transition-all"
               aria-label="Cómo llegar a La Aguja de Oro en Avilés"
             >
               <MapIcon className="w-5 h-5" />
-              Cómo llegar
+              Cómo llegar al taller
             </a>
           </div>
 
-          {/* Same-day note */}
-          <p className="mt-5 text-sm text-[var(--color-muted)] flex items-center gap-1.5 justify-center lg:justify-start">
-            <ClockIcon className="w-4 h-4 shrink-0 text-[var(--color-gold)]" />
-            Algunos arreglos pueden realizarse el mismo día. Consúltanos.
-          </p>
+          {/* Trust points list */}
+          <div className="mt-6 pt-5 border-t border-[var(--color-border)] flex flex-wrap items-center justify-center lg:justify-start gap-y-2 gap-x-5 text-xs text-[var(--color-muted)]">
+            <span className="flex items-center gap-1.5 font-medium text-[var(--color-text)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-gold)]" />
+              Sin cita previa
+            </span>
+            <span className="flex items-center gap-1.5 font-medium text-[var(--color-text)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-gold)]" />
+              Presupuesto en el acto
+            </span>
+            <span className="flex items-center gap-1.5 font-medium text-[var(--color-text)]">
+              <ClockIcon className="w-3.5 h-3.5 text-[var(--color-gold)]" />
+              Arreglos en el mismo día según prenda
+            </span>
+          </div>
         </div>
 
         {/* Right: Image / visual element */}
@@ -95,7 +128,7 @@ export function Hero() {
           <div className="relative">
             {/* Main image frame */}
             <div
-              className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-lg)] bg-[var(--color-surface-2)]"
+              className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-lg)] bg-[var(--color-surface-2)] group border border-[var(--color-gold-border)]"
               style={{ aspectRatio: '4/5', maxHeight: '520px' }}
             >
               <Image
@@ -103,34 +136,46 @@ export function Hero() {
                 alt="Larbi El Achiri cortando tejido a medida en el taller La Aguja de Oro en Avilés"
                 fill
                 priority
-                className="object-cover object-top hover:scale-105 transition-transform duration-700 ease-out"
+                className="object-cover object-top group-hover:scale-103 transition-transform duration-700 ease-out"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 480px"
               />
 
-              {/* Gold accent border */}
-              <div
-                className="absolute inset-0 rounded-2xl pointer-events-none"
-                style={{ boxShadow: 'inset 0 0 0 1px rgba(184,144,42,0.3)' }}
-              />
+              {/* Bottom badge overlay */}
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-5 text-white flex items-end justify-between">
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-[var(--color-gold-light)] font-bold">Atención personalizada</p>
+                  <p className="text-sm font-semibold">{BUSINESS.owner.name}</p>
+                </div>
+                <div className="text-right">
+                  <span className="text-xs text-gray-300">Taller artesanal</span>
+                  <p className="text-xs font-semibold text-[var(--color-gold-light)]">Avilés, Asturias</p>
+                </div>
+              </div>
             </div>
 
             {/* Experience badge */}
             <div
-              className="absolute -bottom-4 -left-4 md:-left-6 bg-white rounded-xl shadow-[var(--shadow-lg)] p-4 flex items-center gap-3"
-              style={{ border: '1px solid var(--color-border)' }}
+              className="absolute -bottom-4 -left-4 md:-left-6 bg-white rounded-xl shadow-[var(--shadow-lg)] p-3.5 flex items-center gap-3 border border-[var(--color-gold-border)]"
             >
-              <div className="text-center">
-                <div className="stat-number text-2xl">30+</div>
-                <div className="stat-label text-xs">años de experiencia</div>
+              <div className="w-10 h-10 rounded-lg bg-[var(--color-gold-bg)] flex items-center justify-center text-[var(--color-gold)] font-bold">
+                ✂️
+              </div>
+              <div>
+                <div className="stat-number text-xl leading-none">30+</div>
+                <div className="text-[0.7rem] text-[var(--color-muted)] font-medium">años de oficio</div>
               </div>
             </div>
 
-            {/* Quality badge */}
+            {/* Brands badge */}
             <div
-              className="absolute -top-4 -right-4 md:-right-6 bg-[var(--color-gold)] text-white rounded-xl shadow-[var(--shadow-gold)] p-3.5 flex flex-col items-center"
+              className="absolute -top-4 -right-4 md:-right-6 bg-white rounded-xl shadow-[var(--shadow-md)] p-3 border border-[var(--color-border)] flex items-center gap-2"
             >
-              <StarIcon className="w-5 h-5 mb-0.5" />
-              <span className="text-xs font-bold tracking-wide">Precio<br />justo</span>
+              <div className="flex -space-x-1">
+                <span className="w-2 h-2 rounded-full bg-[var(--color-gold)]" />
+              </div>
+              <span className="text-[0.72rem] font-semibold text-[var(--color-text)]">
+                Experiencia en Zara & Mango
+              </span>
             </div>
           </div>
         </div>

@@ -29,6 +29,29 @@ export const BUSINESS = {
       return `${this.street}, ${this.postalCode} ${this.city}, ${this.province}, ${this.country}`;
     },
   },
+  hours: {
+    display: 'Lunes a Viernes: 10:00 - 13:30 y 16:30 - 20:00 | Sábados: 10:00 - 13:30',
+    specification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '10:00',
+        closes: '13:30',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '16:30',
+        closes: '20:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Saturday'],
+        opens: '10:00',
+        closes: '13:30',
+      },
+    ],
+  },
   location: {
     lat: 43.5568,
     lng: -5.9247,
@@ -42,15 +65,17 @@ export const BUSINESS = {
   seo: {
     defaultTitle: 'La Aguja de Oro | Arreglos de Ropa en Avilés, Asturias',
     defaultDescription:
-      'Arreglos y reparaciones de todo tipo de ropa en Avilés, Asturias. 30 años de experiencia. Trae tu prenda y te valoramos el arreglo sin compromiso.',
-    siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://laagujaDeoro.com',
-    ogImageUrl: '/images/logo.png',
+      'Arreglos y reparaciones de todo tipo de ropa en Avilés, Asturias. 30 años de experiencia. Bajos, cremalleras, vestidos, trajes y más. Sin cita previa.',
+    siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://laagujadeoro.es',
+    ogImageUrl: '/images/tienda.jpeg',
   },
   schema: {
     type: 'ClothingStore',
     priceRange: '€',
+    currenciesAccepted: 'EUR',
+    paymentAccepted: 'Cash, Bizum',
     description:
-      'Taller especializado en arreglos y reparaciones de todo tipo de ropa en Avilés, Asturias. Con más de 30 años de experiencia, Larbi El Achiri ofrece atención personalizada y precio justo.',
-    serviceArea: 'Asturias, España',
+      'Taller artesanal especializado en arreglos y reparaciones de todo tipo de ropa en Avilés, Asturias. Con más de 30 años de experiencia, Larbi El Achiri ofrece atención personalizada y precio justo sin compromiso.',
+    serviceArea: 'Avilés, Asturias, España',
   },
 } as const;

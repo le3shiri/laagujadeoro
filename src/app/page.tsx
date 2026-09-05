@@ -28,11 +28,17 @@ export const metadata: Metadata = {
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'ClothingStore',
+  '@type': ['ClothingStore', 'ProfessionalService'],
   name: BUSINESS.name,
   description: BUSINESS.schema.description,
   url: BUSINESS.seo.siteUrl,
   telephone: BUSINESS.phone,
+  image: [
+    `${BUSINESS.seo.siteUrl}/images/tienda.jpeg`,
+    `${BUSINESS.seo.siteUrl}/images/logo.png`,
+    `${BUSINESS.seo.siteUrl}/images/hero-larbi.jpeg`,
+  ],
+  logo: `${BUSINESS.seo.siteUrl}/images/logo.png`,
   address: {
     '@type': 'PostalAddress',
     streetAddress: BUSINESS.address.street,
@@ -46,17 +52,66 @@ const localBusinessSchema = {
     latitude: BUSINESS.location.lat,
     longitude: BUSINESS.location.lng,
   },
+  openingHoursSpecification: BUSINESS.hours.specification,
   areaServed: {
-    '@type': 'State',
+    '@type': 'AdministrativeArea',
     name: 'Asturias',
   },
   priceRange: BUSINESS.schema.priceRange,
+  currenciesAccepted: BUSINESS.schema.currenciesAccepted,
+  paymentAccepted: BUSINESS.schema.paymentAccepted,
   hasMap: BUSINESS.location.googleMapsUrl,
   sameAs: [],
-  employee: {
+  founder: {
     '@type': 'Person',
     name: BUSINESS.owner.name,
-    jobTitle: 'Maestro sastre y propietario',
+    jobTitle: 'Maestro sastre y artesano',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios de Arreglos de Ropa en Avilés',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Arreglos de Pantalones',
+          description: 'Bajos de pantalón, entalle de cintura, cambio de cremallera y reparaciones.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Arreglos de Vestidos',
+          description: 'Ajuste a medida, subida de dobladillos, entalles y vestidos de fiesta y ceremonia.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Chaquetas y Abrigos',
+          description: 'Acortado de mangas, entalle de cuerpo, forros y cambio de botones.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Cambio de Cremalleras',
+          description: 'Sustitución de cremalleras en pantalones, abrigos, chaquetas, faldas y bolsos.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Reparación de Ropa',
+          description: 'Costuras abiertas, desgarros, agujeros y refuerzos en prendas desgastadas.',
+        },
+      },
+    ],
   },
 };
 
