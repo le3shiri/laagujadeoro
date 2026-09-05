@@ -136,15 +136,17 @@ export function Header() {
         <div
           id="mobile-menu"
           className={`md:hidden overflow-hidden transition-all duration-300 ${
-            isMenuOpen ? 'max-h-screen pb-6' : 'max-h-0'
+            isMenuOpen ? 'max-h-screen pb-6 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
           }`}
           aria-hidden={!isMenuOpen}
+          inert={!isMenuOpen ? true : undefined}
         >
           <ul className="flex flex-col gap-1 pt-2 list-none m-0 p-0" role="list">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
+                  tabIndex={isMenuOpen ? 0 : -1}
                   className={`block py-3 px-2 text-base font-medium border-b border-[var(--color-border)] transition-colors ${
                     pathname === link.href
                       ? 'text-[var(--color-gold)]'
@@ -161,6 +163,7 @@ export function Header() {
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
+              tabIndex={isMenuOpen ? 0 : -1}
               className="btn btn-whatsapp w-full justify-center"
             >
               <WhatsAppIcon className="w-5 h-5" />
@@ -168,6 +171,7 @@ export function Header() {
             </a>
             <a
               href={`tel:${BUSINESS.phoneRaw}`}
+              tabIndex={isMenuOpen ? 0 : -1}
               className="btn btn-outline w-full justify-center"
             >
               {BUSINESS.phone}
