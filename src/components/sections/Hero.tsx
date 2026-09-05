@@ -136,8 +136,9 @@ export function Hero() {
                 alt="Larbi El Achiri cortando tejido a medida en el taller La Aguja de Oro en Avilés"
                 fill
                 priority
+                quality={85}
                 className="object-cover object-top group-hover:scale-103 transition-transform duration-700 ease-out"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 480px"
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 460px"
               />
 
               {/* Bottom badge overlay */}

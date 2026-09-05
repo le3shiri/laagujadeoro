@@ -56,8 +56,9 @@ export function BeforeAfterGallery() {
                 src={item.image}
                 alt={item.alt}
                 fill
+                quality={80}
                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                sizes="(max-width: 768px) 100vw, 33vw"
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 30vw, 360px"
               />
               <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-sm text-[var(--color-gold-light)] font-bold text-xs px-3 py-1.5 rounded-lg border border-[var(--color-gold-border)]">
                 Paso {item.step}

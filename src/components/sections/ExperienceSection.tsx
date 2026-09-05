@@ -21,8 +21,9 @@ export function ExperienceSection() {
                 src="/images/hero-larbi3.jpeg"
                 alt="Larbi El Achiri realizando arreglos de costura a máquina en su taller de Avilés"
                 fill
+                quality={80}
                 className="object-cover object-top hover:scale-105 transition-transform duration-700 ease-out"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 500px"
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 480px"
               />
             </div>
 

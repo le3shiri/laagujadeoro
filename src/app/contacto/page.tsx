@@ -216,8 +216,9 @@ export default function ContactoPage() {
                   alt="Fachada del taller de arreglos La Aguja de Oro en Av. San Agustín 7, Avilés"
                   fill
                   priority
+                  quality={80}
                   className="object-cover object-center hover:scale-102 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 550px"
                 />
                 <div className="absolute bottom-3 left-3 bg-black/80 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg text-xs font-medium border border-white/20 flex items-center gap-1.5">
                   <LocationIcon className="w-3.5 h-3.5 text-[var(--color-gold)]" />
